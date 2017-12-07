@@ -139,7 +139,7 @@ elseif s:is_windows
       let dest = iconv(dest, &encoding, 'char')
     endif
     let cmd_exe = (&shell =~? 'cmd\.exe$' ? '' : 'cmd /c ')
-    call system(cmd_exe . 'move /y ' . src  . ' ' . dest)
+    call system(cmd_exe . 'move /y "' . src  . '" "' . dest. '"')
     return !v:shell_error
   endfunction
 else
@@ -273,7 +273,7 @@ elseif s:is_windows
     let src  = substitute(src, '/', '\', 'g')
     let dest = substitute(dest, '/', '\', 'g')
     let cmd_exe = (&shell =~? 'cmd\.exe$' ? '' : 'cmd /c ')
-    call system(cmd_exe . 'copy /y ' . src . ' ' . dest)
+    call system(cmd_exe . 'copy /y "' . src . '" "' . dest . '"')
     return !v:shell_error
   endfunction
 else
